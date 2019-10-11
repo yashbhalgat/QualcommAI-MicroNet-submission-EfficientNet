@@ -90,6 +90,9 @@ def get_constraint(bits, obj):
     if 'activation' in obj:
         lower = 0
         upper = 2 ** bits
+    elif 'swish' in obj:
+        lower = -1
+        upper = 2 ** bits - 1
     else:
         lower = -2 ** (bits - 1) + 1
         upper = 2 ** (bits - 1)
@@ -306,7 +309,7 @@ class Trainer:
             check_point = {'start_epoch': epoch + 1, 'best_quan_acc': best_quan_acc}
             pickle.dump(check_point, fd)
 
-    def __call__(self, total_epoch, save_check_point=True, resume=False):
+    def __call__(self, total_epoch, save_check_point=True, resume=False, ic_manager=None):
         start_epoch = 0
         best_quan_acc = 0
         if resume:
@@ -315,6 +318,8 @@ class Trainer:
 
         for epoch in range(start_epoch, total_epoch):
             print("\n %s | Current: %d | Total: %d" % (datetime.now(), epoch + 1, total_epoch))
+            if ic_manager:
+                ic_manager(epoch)
             train_perf_epoch = train_one_epoch(s_net=self.net,
                                                t_net=self.t_net,
                                                epoch=epoch,
