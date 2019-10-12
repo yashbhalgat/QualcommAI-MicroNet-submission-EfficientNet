@@ -6,4 +6,4 @@ Affiliation: Qualcomm AI Research, an initiative of Qualcomm Technologies Inc.
 Contact: ybhalgat@qti.qualcomm.com, jinwonl@qti.qualcomm.com
 
 ### Instructions
-Please refer to [Report.pdf](Report.pdf)
+Please refer to [Report_EfficientNet.pdf](Report_EfficientNet.pdf)
