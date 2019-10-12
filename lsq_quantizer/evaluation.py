@@ -6,6 +6,7 @@ from utils.data_loader import dataloader_imagenet
 from helpers import load_checkpoint
 from utils.utilities import get_constraint, eval_performance
 from utils.add_lsqmodule import add_lsqmodule
+from micronet_score import get_micronet_score
 
 
 def get_arguments():
@@ -76,6 +77,8 @@ def main():
     name_weights_new.update(name_weights_old)
     load_checkpoint(net, name_weights_new)
 
+    score = get_micronet_score(net, args.weight_bits, args.activation_bits, weight_strategy=strat, activation_strategy=act_strat)
+    
     criterion = torch.nn.CrossEntropyLoss()
 
     # Calculate accuracy
@@ -85,5 +88,6 @@ def main():
     accuracy = quan_perf_epoch[1]
 
     print("Accuracy:", accuracy)
+    print("Score:", score)
 
 main()
