@@ -1,3 +1,6 @@
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/yashbhalgat/QualcommAI-MicroNet-submission-EfficientNet/blob/master/LICENSE)
+
+
 # MicroNet Challenge Submission - Submission name: QualcommAI-EfficientNet
 Team: Yash Bhalgat, Kambiz Azarian, Jangho Kim, Jinwon Lee, Hsin-Pai Cheng, Chirag Patel
 
